@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Grammar Games</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light blue-gray */
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+        }
+        .game-section {
+            border: 1px solid #cbd5e1; /* Light gray border */
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            background-color: #f8fafc; /* Very light blue-gray */
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary {
+            background-color: #4f46e5; /* Indigo */
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #4338ca; /* Darker indigo */
+            transform: translateY(-1px);
+        }
+        .btn-secondary {
+            background-color: #e0e7ff; /* Light indigo */
+            color: #4f46e5;
+            border: 1px solid #4f46e5;
+        }
+        .btn-secondary:hover {
+            background-color: #c7d2fe; /* Lighter indigo */
+            transform: translateY(-1px);
+        }
+        .message-box {
+            background-color: #d1fae5; /* Green light */
+            color: #065f46; /* Green dark */
+            padding: 0.75rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border: 1px solid #10b981;
+            display: none; /* Hidden by default */
+        }
+        .message-box.error {
+            background-color: #fee2e2; /* Red light */
+            color: #991b1b; /* Red dark */
+            border: 1px solid #ef4444;
+        }
+        input[type="text"] {
+            border: 1px solid #cbd5e1;
+            padding: 0.75rem;
+            border-radius: 8px;
+            width: 100%;
+            box-sizing: border-box; /* Include padding in width */
+        }
+        .word-button {
+            background-color: #bfdbfe; /* Light blue */
+            color: #1e3a8a; /* Dark blue */
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: grab;
+            margin: 0.25rem;
+            transition: background-color 0.2s;
+            border: 1px solid #93c5fd;
+        }
+        .word-button:hover {
+            background-color: #93c5fd;
+        }
+        .drop-zone {
+            border: 2px dashed #93c5fd;
+            background-color: #eff6ff; /* Very light blue */
+            min-height: 50px;
+            padding: 1rem;
+            border-radius: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .drop-zone .word-button {
+            cursor: pointer; /* Can click to return */
+        }
+    </style>
+</head>
+<body class="p-4">
+    <div class="container">
+        <h1 class="text-3xl font-bold text-center mb-6 text-indigo-700">English Grammar Games for Tech Students</h1>
+
+        <!-- Game 1: Routine Builder & Scramble -->
+        <div class="game-section">
+            <h2 class="text-2xl font-semibold mb-4 text-indigo-600">Game 1: Routine Builder & Scramble</h2>
+            <p class="mb-4 text-gray-700">Practice Simple Present and Adverbs of Frequency by building and unscrambling sentences about tech routines.</p>
+
+            <div class="mb-4">
+                <label for="adverbSelect" class="block text-gray-700 text-sm font-bold mb-2">Adverb of Frequency:</label>
+                <select id="adverbSelect" class="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-indigo-500">
+                    <option value="always">always</option>
+                    <option value="usually">usually</option>
+                    <option value="often">often</option>
+                    <option value="sometimes">sometimes</option>
+                    <option value="rarely">rarely</option>
+                    <option value="never">never</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="verbSelect" class="block text-gray-700 text-sm font-bold mb-2">Verb (Simple Present):</label>
+                <select id="verbSelect" class="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-indigo-500">
+                    <option value="check">check (emails/messages)</option>
+                    <option value="code">code (programs)</option>
+                    <option value="update">update (software/apps)</option>
+                    <option value="research">research (new technologies)</option>
+                    <option value="play">play (video games)</option>
+                    <option value="watch">watch (tech tutorials/reviews)</option>
+                    <option value="debug">debug (code)</option>
+                    <option value="charge">charge (my devices)</option>
+                </select>
+            </div>
+
+            <div class="mb-6">
+                <label for="objectInput" class="block text-gray-700 text-sm font-bold mb-2">Object/Complement (e.g., "my emails", "new features"):</label>
+                <input type="text" id="objectInput" placeholder="e.g., 'my emails', 'new features', 'about AI'" class="focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+            </div>
+
+            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-6">
+                <button id="generateSentenceBtn" class="btn btn-primary flex-1">Generate Scrambled Sentence</button>
+                <button id="resetScrambleBtn" class="btn btn-secondary flex-1">Reset</button>
+            </div>
+
+            <div id="scrambledSentence" class="flex flex-wrap justify-center p-4 bg-gray-100 rounded-md mb-4 border border-gray-300">
+                <!-- Scrambled words will appear here -->
+            </div>
+
+            <div id="dropZone" class="drop-zone mb-4">
+                <!-- Words will be dropped here -->
+            </div>
+
+            <button id="checkSentenceBtn" class="btn btn-primary w-full">Check Sentence</button>
+            <div id="scrambleMessage" class="message-box"></div>
+        </div>
+
+        <!-- Game 2: Hobby Match & Describe -->
+        <div class="game-section">
+            <h2 class="text-2xl font-semibold mb-4 text-indigo-600">Game 2: Hobby Match & Describe</h2>
+            <p class="mb-4 text-gray-700">Match hobby descriptions and then describe your own using Simple Present.</p>
+
+            <div id="hobbyDescription" class="text-xl font-medium text-center p-4 bg-yellow-100 rounded-md mb-4 border border-yellow-300">
+                <!-- Hobby description will appear here -->
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-4 mb-6" id="hobbyButtonsContainer">
+                <!-- Hobby buttons will be dynamically generated here -->
+            </div>
+
+            <button id="nextHobbyBtn" class="btn btn-primary w-full mb-4">Next Hobby</button>
+            <div id="hobbyMessage" class="message-box"></div>
+
+            <h3 class="text-xl font-semibold mt-6 mb-3 text-indigo-600">Describe Your Own Tech Hobby:</h3>
+            <p class="mb-3 text-gray-700">Write about a tech hobby you enjoy. Use Simple Present and say how often you do it.</p>
+            <textarea id="myHobbyDescription" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent" rows="4" placeholder="Example: I often play video games with my friends. We usually play online. It's fun!"></textarea>
+            <button id="submitMyHobbyBtn" class="btn btn-primary mt-4 w-full">Submit My Description</button>
+            <div id="myHobbyMessage" class="message-box"></div>
+        </div>
+    </div>
+
+    <script>
+        // --- Game 1: Routine Builder & Scramble ---
+        const adverbSelect = document.getElementById('adverbSelect');
+        const verbSelect = document.getElementById('verbSelect');
+        const objectInput = document.getElementById('objectInput');
+        const generateSentenceBtn = document.getElementById('generateSentenceBtn');
+        const resetScrambleBtn = document.getElementById('resetScrambleBtn');
+        const scrambledSentenceDiv = document.getElementById('scrambledSentence');
+        const dropZone = document.getElementById('dropZone');
+        const checkSentenceBtn = document.getElementById('checkSentenceBtn');
+        const scrambleMessage = document.getElementById('scrambleMessage');
+
+        let correctSentenceWords = [];
+        let currentScrambledWords = [];
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        generateSentenceBtn.addEventListener('click', () => {
+            const adverb = adverbSelect.value;
+            const verb = verbSelect.value;
+            const object = objectInput.value.trim();
+
+            if (!object) {
+                showMessage(scrambleMessage, 'Please enter an object/complement for your sentence.', true);
+                return;
+            }
+
+            // Construct the correct sentence based on Simple Present rules (subject + adverb + verb + object)
+            // For simplicity, we'll assume "I" as the subject.
+            let sentence = `I ${adverb} ${verb} ${object}.`;
+
+            // Handle verb conjugation for third person singular (though we're using "I" here)
+            // This is a good point for the teacher to explain.
+            // If we were to use "He/She", the verb would need an 's'.
+            // Example for future expansion: if (subject === 'He' || subject === 'She') { verb += 's'; }
+
+            correctSentenceWords = sentence.split(' ').map(word => word.replace('.', '').toLowerCase());
+            currentScrambledWords = shuffleArray([...correctSentenceWords]);
+
+            scrambledSentenceDiv.innerHTML = '';
+            dropZone.innerHTML = '';
+            scrambleMessage.style.display = 'none';
+
+            currentScrambledWords.forEach(word => {
+                const button = document.createElement('button');
+                button.textContent = word;
+                button.classList.add('word-button');
+                button.draggable = true;
+                button.dataset.word = word;
+                button.addEventListener('dragstart', (e) => {
+                    e.dataTransfer.setData('text/plain', e.target.dataset.word);
+                    e.dataTransfer.effectAllowed = 'move';
+                });
+                button.addEventListener('click', () => {
+                    // Allow clicking to move from drop zone back to scrambled
+                    if (dropZone.contains(button)) {
+                        scrambledSentenceDiv.appendChild(button);
+                    }
+                });
+                scrambledSentenceDiv.appendChild(button);
+            });
+        });
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault(); // Allow drop
+            e.dataTransfer.dropEffect = 'move';
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            const word = e.dataTransfer.getData('text/plain');
+            const draggedButton = scrambledSentenceDiv.querySelector(`[data-word="${word}"]`);
+            if (draggedButton) {
+                dropZone.appendChild(draggedButton);
+            }
+        });
+
+        resetScrambleBtn.addEventListener('click', () => {
+            generateSentenceBtn.click(); // Re-generate and re-scramble
+        });
+
+        checkSentenceBtn.addEventListener('click', () => {
+            const placedWords = Array.from(dropZone.children).map(btn => btn.dataset.word);
+            const placedSentence = placedWords.join(' ').toLowerCase();
+            const correctSentence = correctSentenceWords.join(' ').toLowerCase();
+
+            if (placedSentence === correctSentence) {
+                showMessage(scrambleMessage, 'Correct! Great job!', false);
+            } else {
+                showMessage(scrambleMessage, `Incorrect. Try again! The correct order is: "${correctSentenceWords.join(' ')}"`, true);
+            }
+        });
+
+        function showMessage(element, text, isError) {
+            element.textContent = text;
+            element.classList.remove('error');
+            if (isError) {
+                element.classList.add('error');
+            }
+            element.style.display = 'block';
+        }
+
+        // --- Game 2: Hobby Match & Describe ---
+        const hobbyDescriptionDiv = document.getElementById('hobbyDescription');
+        const hobbyButtonsContainer = document.getElementById('hobbyButtonsContainer');
+        const nextHobbyBtn = document.getElementById('nextHobbyBtn');
+        const hobbyMessage = document.getElementById('hobbyMessage');
+        const myHobbyDescriptionTextarea = document.getElementById('myHobbyDescription');
+        const submitMyHobbyBtn = document.getElementById('submitMyHobbyBtn');
+        const myHobbyMessage = document.getElementById('myHobbyMessage');
+
+        const hobbies = [
+            { name: "Coding", description: "I usually spend hours writing computer programs. I enjoy solving problems with lines of text.", keywords: ["code", "program", "solve", "write"] },
+            { name: "Gaming", description: "I often play video games online with my friends. We usually communicate using headsets.", keywords: ["play", "video games", "online", "headsets"] },
+            { name: "Streaming", description: "I sometimes broadcast my gameplay or talk about tech topics live. Many people watch my channel.", keywords: ["broadcast", "live", "channel", "watch"] },
+            { name: "Robotics", description: "I build and program robots in my free time. It's challenging but very rewarding.", keywords: ["build", "program", "robots", "challenging"] },
+            { name: "Tech Reviewing", description: "I frequently read about and test new gadgets. Then I write or make videos sharing my opinions.", keywords: ["test", "gadgets", "write", "videos"] },
+            { name: "Cybersecurity", description: "I sometimes learn about protecting computers and networks from attacks. It's a very important skill.", keywords: ["protect", "computers", "networks", "attacks"] },
+            { name: "Web Design", description: "I enjoy creating beautiful and functional websites. I often use HTML, CSS, and JavaScript.", keywords: ["create", "websites", "HTML", "CSS", "JavaScript"] },
+            { name: "3D Modeling", description: "I usually use special software to create three-dimensional objects or characters. It requires precision.", keywords: ["create", "3D objects", "software", "precision"] }
+        ];
+
+        let currentHobbyIndex = 0;
+        let shuffledHobbies = [];
+
+        function initializeHobbyGame() {
+            shuffledHobbies = shuffleArray([...hobbies]);
+            currentHobbyIndex = 0;
+            displayCurrentHobby();
+        }
+
+        function displayCurrentHobby() {
+            if (currentHobbyIndex < shuffledHobbies.length) {
+                const currentHobby = shuffledHobbies[currentHobbyIndex];
+                hobbyDescriptionDiv.textContent = currentHobby.description;
+                createHobbyButtons(currentHobby);
+                hobbyMessage.style.display = 'none';
+            } else {
+                hobbyDescriptionDiv.textContent = "You've matched all hobbies! Great job!";
+                hobbyButtonsContainer.innerHTML = '';
+                nextHobbyBtn.disabled = true;
+            }
+        }
+
+        function createHobbyButtons(correctHobby) {
+            hobbyButtonsContainer.innerHTML = '';
+            const allHobbyNames = hobbies.map(h => h.name);
+            let buttonsToShow = [correctHobby.name];
+
+            // Add 2-3 random incorrect hobbies
+            while (buttonsToShow.length < 4) { // Ensure 4 buttons total
+                const randomHobby = allHobbyNames[Math.floor(Math.random() * allHobbyNames.length)];
+                if (!buttonsToShow.includes(randomHobby)) {
+                    buttonsToShow.push(randomHobby);
+                }
+            }
+            buttonsToShow = shuffleArray(buttonsToShow);
+
+            buttonsToShow.forEach(name => {
+                const button = document.createElement('button');
+                button.textContent = name;
+                button.classList.add('btn', 'btn-secondary', 'flex-grow-0', 'sm:flex-none'); // Adjusted for smaller screens
+                button.style.minWidth = '120px'; // Ensure buttons have minimum width
+                button.addEventListener('click', () => checkHobbyMatch(name, correctHobby.name));
+                hobbyButtonsContainer.appendChild(button);
+            });
+        }
+
+        function checkHobbyMatch(selectedName, correctName) {
+            if (selectedName === correctName) {
+                showMessage(hobbyMessage, 'Correct! This is ' + correctName + '.', false);
+                // Optionally disable buttons after correct answer
+                Array.from(hobbyButtonsContainer.children).forEach(btn => btn.disabled = true);
+            } else {
+                showMessage(hobbyMessage, 'Incorrect. Try again!', true);
+            }
+        }
+
+        nextHobbyBtn.addEventListener('click', () => {
+            currentHobbyIndex++;
+            displayCurrentHobby();
+        });
+
+        submitMyHobbyBtn.addEventListener('click', () => {
+            const description = myHobbyDescriptionTextarea.value.trim();
+            if (description.length > 20) { // Simple check for a meaningful sentence
+                showMessage(myHobbyMessage, 'Thanks for sharing your tech hobby! Your description is great practice.', false);
+                myHobbyDescriptionTextarea.value = ''; // Clear for next input
+            } else {
+                showMessage(myHobbyMessage, 'Please write a bit more about your hobby (at least 20 characters).', true);
+            }
+        });
+
+        // Initialize games on load
+        window.onload = function() {
+            initializeHobbyGame();
+            generateSentenceBtn.click(); // Generate initial scrambled sentence
+        };
+    </script>
+</body>
+</html>
